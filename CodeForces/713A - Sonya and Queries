@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    map<string,int> t;
+    long long tmp;
+    int n;
+    cin >> n;
+    while(n --)
+    {
+        char op;
+        cin >> op;
+        string s;
+        if(op == '+')
+        {
+            cin>>tmp;
+            for(int i=0;i<18;i++)
+            {
+                s += '0' + (tmp%2);
+                tmp /= 10;
+            }
+            t[s]++;
+        }
+        if(op == '-')
+        {
+            cin >> tmp;
+            for(int i = 0;i < 18;i ++)
+            {
+                s += '0' + (tmp % 2);
+                tmp /= 10;
+            }
+            t[s]--;
+        }
+        if(op == '?')
+        {
+            cin >> s;
+            reverse(s.begin(),s.end());
+            while(s.size() != 18)
+                s += '0';
+            cout << t[s] << endl;
+        }
+    }
+}
